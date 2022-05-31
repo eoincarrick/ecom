@@ -35,11 +35,18 @@ export const getStaticProps = async () => {
 
   const result = await client.fetch(query);
 
-  return {
-    props: {
-      result,
-    },
-  };
+  if (!result) {
+    return {
+      NO_Data: true,
+      data: [],
+    };
+  } else {
+    return {
+      props: {
+        result,
+      },
+    };
+  }
 };
 
 export default Search;

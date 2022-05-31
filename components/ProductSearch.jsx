@@ -11,6 +11,13 @@ const ProductSearch = ({ selectedValue, data }) => {
   const handleSearch = (event) => {
     const searchWord = event.target.value;
     setWord(searchWord);
+
+    if (!data) {
+      return {
+        data: [],
+      };
+    }
+
     const searchName = data.filter((productName, index) => {
       return productName.name.toLowerCase().includes(searchWord.toLowerCase());
     });
